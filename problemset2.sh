@@ -41,28 +41,5 @@ $datasets/bedtools/tss.hg19.chr22.bed -g $datasets/genome/hg19.genome \
  | sort -k7n \
  | tail -n1 \
  | cut -f4)
- echo "answer-4: $gene_promoter" >> answers.yml
-
-
-
-bedtools flank -l 1000 -r 0 -s -i \
-$datasets/bedtools/tss.hg19.chr22.bed -g $datasets/genome/hg19.genome \
- | bedtools sort -i - \
- | bedtools map -a - -b $datasets/bedtools/ctcf.hela.chr22.bg -c 4 -o median \
- | wc -l 
-
-<<A
- 
- | awk '$7 != "."' \
- | sort -k7n | tail
-
-
-<<
- | tail -n1 \
- | cut -f4
-
-
-# echo "answer-4: $gene_promoter" >> answers.yml
-
-
+ echo "answer-4= $gene_promoter" >> answers.yml
 
